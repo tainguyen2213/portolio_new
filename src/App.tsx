@@ -24,7 +24,7 @@ const App: React.FC = () => {
   const [showSplash, setShowSplash] = useState(true);
   const { theme, isDarkMode, toggleTheme, changeTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
-  const { activeSection, isScrolled, scrollToSection } = useScrollTracking();
+  const { activeSection, isScrolled, scrollToSection } = useScrollTracking(language);
 
   // Memoized data loading for performance
   const data = useMemo(() => ({

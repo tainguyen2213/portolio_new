@@ -1,7 +1,8 @@
 import React from 'react';
 import { Mail, Download, Github, Phone, Globe, ChevronDown, User, Sparkles } from 'lucide-react';
 import TypewriterText from './ui/TypewriterText';
-import ParticleBackground from './ui/ParticleBackground';
+import DynamicSkyBackground from './ui/DynamicSkyBackground';
+import AnimatedAvatar from './ui/AnimatedAvatar';
 
 interface HeroSectionProps {
   translations: any;
@@ -17,31 +18,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ translations, personalData })
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20 relative overflow-hidden">
-      <ParticleBackground particleCount={30} />
-
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400/20 to-purple-600/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-400/20 to-pink-600/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-400/10 to-blue-600/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-      </div>
+      <DynamicSkyBackground />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className="mb-12 animate-fadeInUp">
-          <div className="relative mb-8">
-            <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 p-1 animate-scaleIn">
-              <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center relative overflow-hidden group">
-                <User size={64} className="text-blue-600 group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-              </div>
-            </div>
-            <div className="absolute -top-2 -right-2 animate-float">
-              <Sparkles className="text-yellow-500" size={24} />
-            </div>
-            <div className="absolute -bottom-2 -left-2 animate-float" style={{ animationDelay: '1s' }}>
-              <Sparkles className="text-pink-500" size={20} />
-            </div>
-          </div>
+          <AnimatedAvatar />
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slideInLeft">
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">

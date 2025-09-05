@@ -131,13 +131,15 @@ const Navigation: React.FC<NavigationProps> = ({
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div 
-          className="mobile-menu-overlay lg:hidden"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden animate-fadeInUp"
           onClick={() => setIsMenuOpen(false)}
         />
       )}
 
       {/* Mobile Navigation Menu */}
-      <div className={`mobile-menu lg:hidden ${isMenuOpen ? 'open' : ''}`}>
+      <div className={`fixed top-0 right-0 h-full w-80 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-l border-gray-200/50 dark:border-gray-700/50 z-50 lg:hidden transform transition-transform duration-300 ease-out ${
+        isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
         <div className="p-6 pt-20">
           {/* Mobile Theme and Language toggles */}
           <div className="flex flex-col space-y-4 mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">

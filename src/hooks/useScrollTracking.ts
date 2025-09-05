@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { smoothScrollTo } from '../utils/animations';
 import { throttle } from '../utils/performance';
+import { updateMetaTags, getMetaDataForSection } from '../utils/metaUpdater';
 import { SCROLL_THRESHOLD } from '../constants';
 
-export const useScrollTracking = () => {
+export const useScrollTracking = (language: string = 'en') => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -24,8 +25,12 @@ export const useScrollTracking = () => {
     
     if (current && current !== activeSection) {
       setActiveSection(current);
+      
+      // Update meta tags when section changes
+      const metaData = getMetaDataForSection(current, language);
+      updateMetaTags(metaData);
     }
-  }, [activeSection]);
+  }, [activeSection, language]);
 
   useEffect(() => {
     const throttledScroll = throttle(handleScroll, 16); // ~60fps
